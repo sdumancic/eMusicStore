@@ -1,0 +1,435 @@
+<dataSource name="H2 - jdbc:h2:tcp://localhost:9092/~/test">
+  <database-model serializer="dbm" rdbms="H2" format-version="2.6">
+    <database id="1" name="TEST">
+      <visible>1</visible>
+    </database>
+    <schema id="2" parent="1" name="INFORMATION_SCHEMA" />
+    <schema id="3" parent="1" name="PUBLIC">
+      <visible>1</visible>
+    </schema>
+    <table id="4" parent="3" name="ACCOUNT" />
+    <table id="5" parent="3" name="AUTHORITIES" />
+    <table id="6" parent="3" name="BILLINGADDRESS" />
+    <table id="7" parent="3" name="BOOK" />
+    <table id="8" parent="3" name="CART" />
+    <table id="9" parent="3" name="CARTITEM" />
+    <table id="10" parent="3" name="CUSTOMER" />
+    <table id="11" parent="3" name="CUSTOMERORDER" />
+    <table id="12" parent="3" name="GROUP_AUTHORITIES" />
+    <table id="13" parent="3" name="GROUP_MEMBERS" />
+    <table id="14" parent="3" name="GROUPS" />
+    <table id="15" parent="3" name="PRODUCT" />
+    <table id="16" parent="3" name="SHIPPINGADDRESS" />
+    <table id="17" parent="3" name="STUDENT" />
+    <table id="18" parent="3" name="USERS" />
+    <column id="19" parent="4" name="ID">
+      <mandatory>1</mandatory>
+      <data-type>BIGINT(19)|-5</data-type>
+      <sequence-identity>1</sequence-identity>
+      <default-expression>(NEXT VALUE FOR PUBLIC.SYSTEM_SEQUENCE_C4554274_802C_44BC_B67C_747E556DF6D0)</default-expression>
+    </column>
+    <column id="20" parent="4" name="OWNER_NAME">
+      <data-type>VARCHAR(255)|12</data-type>
+    </column>
+    <column id="21" parent="4" name="BALANCE">
+      <data-type>DOUBLE(17)|8</data-type>
+    </column>
+    <column id="22" parent="4" name="ACCESS_TIME">
+      <data-type>TIMESTAMP(23,10)|93</data-type>
+    </column>
+    <column id="23" parent="4" name="LOCKED">
+      <data-type>BOOLEAN(1)|16</data-type>
+    </column>
+    <key id="24" parent="4" name="CONSTRAINT_E">
+      <name-surrogate>1</name-surrogate>
+      <columns>ID</columns>
+      <primary>1</primary>
+    </key>
+    <column id="25" parent="5" name="AUTHORITIESID">
+      <mandatory>1</mandatory>
+      <data-type>INTEGER(10)|4</data-type>
+    </column>
+    <column id="26" parent="5" name="AUTHORITY">
+      <data-type>VARCHAR(255)|12</data-type>
+    </column>
+    <column id="27" parent="5" name="USERNAME">
+      <data-type>VARCHAR(255)|12</data-type>
+    </column>
+    <key id="28" parent="5" name="CONSTRAINT_A">
+      <name-surrogate>1</name-surrogate>
+      <columns>AUTHORITIESID</columns>
+      <primary>1</primary>
+    </key>
+    <column id="29" parent="6" name="BILLINGADDRESSID">
+      <mandatory>1</mandatory>
+      <data-type>INTEGER(10)|4</data-type>
+    </column>
+    <column id="30" parent="6" name="APARTMENTNUMBER">
+      <data-type>VARCHAR(255)|12</data-type>
+    </column>
+    <column id="31" parent="6" name="CITY">
+      <data-type>VARCHAR(255)|12</data-type>
+    </column>
+    <column id="32" parent="6" name="COUNTRY">
+      <data-type>VARCHAR(255)|12</data-type>
+    </column>
+    <column id="33" parent="6" name="STATE">
+      <data-type>VARCHAR(255)|12</data-type>
+    </column>
+    <column id="34" parent="6" name="STREETNAME">
+      <data-type>VARCHAR(255)|12</data-type>
+    </column>
+    <column id="35" parent="6" name="ZIPCODE">
+      <data-type>VARCHAR(255)|12</data-type>
+    </column>
+    <column id="36" parent="6" name="CUSTOMER_CUSTOMERID">
+      <data-type>INTEGER(10)|4</data-type>
+    </column>
+    <key id="37" parent="6" name="CONSTRAINT_46">
+      <name-surrogate>1</name-surrogate>
+      <columns>BILLINGADDRESSID</columns>
+      <primary>1</primary>
+    </key>
+    <foreign-key id="38" parent="6" name="FKPJKGRJCNQW9ODXNQD4E1XSUCF">
+      <columns>CUSTOMER_CUSTOMERID</columns>
+      <ref-key>~.CUSTOMER.CONSTRAINT_5</ref-key>
+      <cascade-update-rule>restrict</cascade-update-rule>
+      <cascade-delete-rule>restrict</cascade-delete-rule>
+    </foreign-key>
+    <column id="39" parent="7" name="ID">
+      <mandatory>1</mandatory>
+      <data-type>BIGINT(19)|-5</data-type>
+      <sequence-identity>1</sequence-identity>
+      <default-expression>(NEXT VALUE FOR PUBLIC.SYSTEM_SEQUENCE_3348811C_56B2_4042_89CA_10D5A5A055CD)</default-expression>
+    </column>
+    <column id="40" parent="7" name="NAME">
+      <data-type>VARCHAR(255)|12</data-type>
+    </column>
+    <column id="41" parent="7" name="STUDENT_ID">
+      <data-type>BIGINT(19)|-5</data-type>
+    </column>
+    <key id="42" parent="7" name="CONSTRAINT_1">
+      <name-surrogate>1</name-surrogate>
+      <columns>ID</columns>
+      <primary>1</primary>
+    </key>
+    <foreign-key id="43" parent="7" name="FK_3B87UBV1MV6GXMVLS92FQ0OAD">
+      <columns>STUDENT_ID</columns>
+      <ref-key>~.STUDENT.CONSTRAINT_B</ref-key>
+      <cascade-update-rule>restrict</cascade-update-rule>
+      <cascade-delete-rule>restrict</cascade-delete-rule>
+    </foreign-key>
+    <column id="44" parent="8" name="CARTID">
+      <mandatory>1</mandatory>
+      <data-type>INTEGER(10)|4</data-type>
+    </column>
+    <column id="45" parent="8" name="GRANDTOTAL">
+      <mandatory>1</mandatory>
+      <data-type>DOUBLE(17)|8</data-type>
+    </column>
+    <column id="46" parent="8" name="CUSTOMERID">
+      <data-type>INTEGER(10)|4</data-type>
+    </column>
+    <key id="47" parent="8" name="CONSTRAINT_1F">
+      <name-surrogate>1</name-surrogate>
+      <columns>CARTID</columns>
+      <primary>1</primary>
+    </key>
+    <foreign-key id="48" parent="8" name="FK4FRNGJI4R1FTBJOR2ABKBA6AJ">
+      <columns>CUSTOMERID</columns>
+      <ref-key>~.CUSTOMER.CONSTRAINT_5</ref-key>
+      <cascade-update-rule>restrict</cascade-update-rule>
+      <cascade-delete-rule>restrict</cascade-delete-rule>
+    </foreign-key>
+    <column id="49" parent="9" name="CARTITEMID">
+      <mandatory>1</mandatory>
+      <data-type>INTEGER(10)|4</data-type>
+    </column>
+    <column id="50" parent="9" name="QUANTITY">
+      <mandatory>1</mandatory>
+      <data-type>INTEGER(10)|4</data-type>
+    </column>
+    <column id="51" parent="9" name="TOTALPRICE">
+      <mandatory>1</mandatory>
+      <data-type>DOUBLE(17)|8</data-type>
+    </column>
+    <column id="52" parent="9" name="CARTID">
+      <data-type>INTEGER(10)|4</data-type>
+    </column>
+    <column id="53" parent="9" name="PRODUCTID">
+      <data-type>VARCHAR(255)|12</data-type>
+    </column>
+    <key id="54" parent="9" name="CONSTRAINT_2">
+      <name-surrogate>1</name-surrogate>
+      <columns>CARTITEMID</columns>
+      <primary>1</primary>
+    </key>
+    <foreign-key id="55" parent="9" name="FK1DDQMBYTUIN6GIODGT7M8ELE5">
+      <columns>CARTID</columns>
+      <ref-key>~.CART.CONSTRAINT_1F</ref-key>
+      <cascade-update-rule>restrict</cascade-update-rule>
+      <cascade-delete-rule>restrict</cascade-delete-rule>
+    </foreign-key>
+    <foreign-key id="56" parent="9" name="FKFM2XPV0AKSXNPOUCOYWB41F86">
+      <columns>PRODUCTID</columns>
+      <ref-key>~.PRODUCT.CONSTRAINT_18</ref-key>
+      <cascade-update-rule>restrict</cascade-update-rule>
+      <cascade-delete-rule>restrict</cascade-delete-rule>
+    </foreign-key>
+    <column id="57" parent="10" name="CUSTOMERID">
+      <mandatory>1</mandatory>
+      <data-type>INTEGER(10)|4</data-type>
+    </column>
+    <column id="58" parent="10" name="CUSTOMEREMAIL">
+      <mandatory>1</mandatory>
+      <data-type>VARCHAR(255)|12</data-type>
+    </column>
+    <column id="59" parent="10" name="CUSTOMERNAME">
+      <mandatory>1</mandatory>
+      <data-type>VARCHAR(255)|12</data-type>
+    </column>
+    <column id="60" parent="10" name="CUSTOMERPHONE">
+      <data-type>VARCHAR(255)|12</data-type>
+    </column>
+    <column id="61" parent="10" name="ENABLED">
+      <mandatory>1</mandatory>
+      <data-type>BOOLEAN(1)|16</data-type>
+    </column>
+    <column id="62" parent="10" name="PASSWORD">
+      <mandatory>1</mandatory>
+      <data-type>VARCHAR(255)|12</data-type>
+    </column>
+    <column id="63" parent="10" name="USERNAME">
+      <mandatory>1</mandatory>
+      <data-type>VARCHAR(255)|12</data-type>
+    </column>
+    <column id="64" parent="10" name="BILLINGADDRESSID">
+      <data-type>INTEGER(10)|4</data-type>
+    </column>
+    <column id="65" parent="10" name="CARTID">
+      <data-type>INTEGER(10)|4</data-type>
+    </column>
+    <column id="66" parent="10" name="SHIPPINGADDRESSID">
+      <data-type>INTEGER(10)|4</data-type>
+    </column>
+    <key id="67" parent="10" name="CONSTRAINT_5">
+      <name-surrogate>1</name-surrogate>
+      <columns>CUSTOMERID</columns>
+      <primary>1</primary>
+    </key>
+    <foreign-key id="68" parent="10" name="FKR5WI61LG58IM15H4MWYS66F2F">
+      <columns>BILLINGADDRESSID</columns>
+      <ref-key>~.BILLINGADDRESS.CONSTRAINT_46</ref-key>
+      <cascade-update-rule>restrict</cascade-update-rule>
+      <cascade-delete-rule>restrict</cascade-delete-rule>
+    </foreign-key>
+    <foreign-key id="69" parent="10" name="FK3B3CEU4YOD31T25X3T678F1Q">
+      <columns>CARTID</columns>
+      <ref-key>~.CART.CONSTRAINT_1F</ref-key>
+      <cascade-update-rule>restrict</cascade-update-rule>
+      <cascade-delete-rule>restrict</cascade-delete-rule>
+    </foreign-key>
+    <foreign-key id="70" parent="10" name="FK20D1UJCACJJND89S8QUARC9NP">
+      <columns>SHIPPINGADDRESSID</columns>
+      <ref-key>~.SHIPPINGADDRESS.CONSTRAINT_26</ref-key>
+      <cascade-update-rule>restrict</cascade-update-rule>
+      <cascade-delete-rule>restrict</cascade-delete-rule>
+    </foreign-key>
+    <column id="71" parent="11" name="CUSTOMERORDERID">
+      <mandatory>1</mandatory>
+      <data-type>INTEGER(10)|4</data-type>
+    </column>
+    <column id="72" parent="11" name="BILLINGADDRESSID">
+      <data-type>INTEGER(10)|4</data-type>
+    </column>
+    <column id="73" parent="11" name="CARTID">
+      <data-type>INTEGER(10)|4</data-type>
+    </column>
+    <column id="74" parent="11" name="CUSTOMERID">
+      <data-type>INTEGER(10)|4</data-type>
+    </column>
+    <column id="75" parent="11" name="SHIPPINGADDRESSID">
+      <data-type>INTEGER(10)|4</data-type>
+    </column>
+    <key id="76" parent="11" name="CONSTRAINT_3">
+      <name-surrogate>1</name-surrogate>
+      <columns>CUSTOMERORDERID</columns>
+      <primary>1</primary>
+    </key>
+    <foreign-key id="77" parent="11" name="FKKU97YUR4WVMA4Y6FJ46I9NYKY">
+      <columns>BILLINGADDRESSID</columns>
+      <ref-key>~.BILLINGADDRESS.CONSTRAINT_46</ref-key>
+      <cascade-update-rule>restrict</cascade-update-rule>
+      <cascade-delete-rule>restrict</cascade-delete-rule>
+    </foreign-key>
+    <foreign-key id="78" parent="11" name="FKSSW7C3IDFGXI4FJ4Q4H7TWFHL">
+      <columns>CARTID</columns>
+      <ref-key>~.CART.CONSTRAINT_1F</ref-key>
+      <cascade-update-rule>restrict</cascade-update-rule>
+      <cascade-delete-rule>restrict</cascade-delete-rule>
+    </foreign-key>
+    <foreign-key id="79" parent="11" name="FKJUTWAK32E8HYLD5Y545Y5O0FF">
+      <columns>CUSTOMERID</columns>
+      <ref-key>~.CUSTOMER.CONSTRAINT_5</ref-key>
+      <cascade-update-rule>restrict</cascade-update-rule>
+      <cascade-delete-rule>restrict</cascade-delete-rule>
+    </foreign-key>
+    <foreign-key id="80" parent="11" name="FKPYVAGLEEC73UWPE30B7BSDYW4">
+      <columns>SHIPPINGADDRESSID</columns>
+      <ref-key>~.SHIPPINGADDRESS.CONSTRAINT_26</ref-key>
+      <cascade-update-rule>restrict</cascade-update-rule>
+      <cascade-delete-rule>restrict</cascade-delete-rule>
+    </foreign-key>
+    <column id="81" parent="12" name="GROUP_ID">
+      <mandatory>1</mandatory>
+      <data-type>BIGINT(19)|-5</data-type>
+    </column>
+    <column id="82" parent="12" name="AUTHORITY">
+      <mandatory>1</mandatory>
+      <data-type>VARCHAR_IGNORECASE(128)|12</data-type>
+    </column>
+    <foreign-key id="83" parent="12" name="FK_GROUP_AUTHORITIES_GROUP">
+      <columns>GROUP_ID</columns>
+      <ref-key>~.GROUPS.PK_GROUPS</ref-key>
+      <cascade-update-rule>restrict</cascade-update-rule>
+      <cascade-delete-rule>restrict</cascade-delete-rule>
+    </foreign-key>
+    <column id="84" parent="13" name="ID">
+      <mandatory>1</mandatory>
+      <data-type>BIGINT(19)|-5</data-type>
+    </column>
+    <column id="85" parent="13" name="USERNAME">
+      <mandatory>1</mandatory>
+      <data-type>VARCHAR_IGNORECASE(128)|12</data-type>
+    </column>
+    <column id="86" parent="13" name="GROUP_ID">
+      <mandatory>1</mandatory>
+      <data-type>BIGINT(19)|-5</data-type>
+    </column>
+    <key id="87" parent="13" name="PK_GROUP_MEMBERS">
+      <columns>ID</columns>
+      <primary>1</primary>
+    </key>
+    <foreign-key id="88" parent="13" name="FK_GROUP_MEMBERS_GROUP">
+      <columns>GROUP_ID</columns>
+      <ref-key>~.GROUPS.PK_GROUPS</ref-key>
+      <cascade-update-rule>restrict</cascade-update-rule>
+      <cascade-delete-rule>restrict</cascade-delete-rule>
+    </foreign-key>
+    <column id="89" parent="14" name="ID">
+      <mandatory>1</mandatory>
+      <data-type>BIGINT(19)|-5</data-type>
+    </column>
+    <column id="90" parent="14" name="GROUP_NAME">
+      <mandatory>1</mandatory>
+      <data-type>VARCHAR_IGNORECASE(128)|12</data-type>
+    </column>
+    <key id="91" parent="14" name="PK_GROUPS">
+      <columns>ID</columns>
+      <primary>1</primary>
+    </key>
+    <column id="92" parent="15" name="PRODUCTID">
+      <mandatory>1</mandatory>
+      <data-type>VARCHAR(255)|12</data-type>
+    </column>
+    <column id="93" parent="15" name="PRODUCTCATEGORY">
+      <data-type>VARCHAR(255)|12</data-type>
+    </column>
+    <column id="94" parent="15" name="PRODUCTCONDITION">
+      <data-type>VARCHAR(255)|12</data-type>
+    </column>
+    <column id="95" parent="15" name="PRODUCTDESCRIPTION">
+      <data-type>VARCHAR(255)|12</data-type>
+    </column>
+    <column id="96" parent="15" name="PRODUCTMANUFACTURER">
+      <data-type>VARCHAR(255)|12</data-type>
+    </column>
+    <column id="97" parent="15" name="PRODUCTNAME">
+      <mandatory>1</mandatory>
+      <data-type>VARCHAR(255)|12</data-type>
+    </column>
+    <column id="98" parent="15" name="PRODUCTPRICE">
+      <mandatory>1</mandatory>
+      <data-type>DOUBLE(17)|8</data-type>
+    </column>
+    <column id="99" parent="15" name="PRODUCTSTATUS">
+      <data-type>VARCHAR(255)|12</data-type>
+    </column>
+    <column id="100" parent="15" name="UNITINSTOCK">
+      <mandatory>1</mandatory>
+      <data-type>INTEGER(10)|4</data-type>
+    </column>
+    <key id="101" parent="15" name="CONSTRAINT_18">
+      <name-surrogate>1</name-surrogate>
+      <columns>PRODUCTID</columns>
+      <primary>1</primary>
+    </key>
+    <column id="102" parent="16" name="SHIPPINGADDRESSID">
+      <mandatory>1</mandatory>
+      <data-type>INTEGER(10)|4</data-type>
+    </column>
+    <column id="103" parent="16" name="APARTMENTNUMBER">
+      <data-type>VARCHAR(255)|12</data-type>
+    </column>
+    <column id="104" parent="16" name="CITY">
+      <data-type>VARCHAR(255)|12</data-type>
+    </column>
+    <column id="105" parent="16" name="COUNTRY">
+      <data-type>VARCHAR(255)|12</data-type>
+    </column>
+    <column id="106" parent="16" name="STATE">
+      <data-type>VARCHAR(255)|12</data-type>
+    </column>
+    <column id="107" parent="16" name="STREETNAME">
+      <data-type>VARCHAR(255)|12</data-type>
+    </column>
+    <column id="108" parent="16" name="ZIPCODE">
+      <data-type>VARCHAR(255)|12</data-type>
+    </column>
+    <key id="109" parent="16" name="CONSTRAINT_26">
+      <name-surrogate>1</name-surrogate>
+      <columns>SHIPPINGADDRESSID</columns>
+      <primary>1</primary>
+    </key>
+    <column id="110" parent="17" name="ID">
+      <mandatory>1</mandatory>
+      <data-type>BIGINT(19)|-5</data-type>
+      <sequence-identity>1</sequence-identity>
+      <default-expression>(NEXT VALUE FOR PUBLIC.SYSTEM_SEQUENCE_38F529F6_0822_46D2_BF5E_858E8348EAF8)</default-expression>
+    </column>
+    <column id="111" parent="17" name="FIRSTNAME">
+      <data-type>VARCHAR(255)|12</data-type>
+    </column>
+    <column id="112" parent="17" name="LASTNAME">
+      <data-type>VARCHAR(255)|12</data-type>
+    </column>
+    <key id="113" parent="17" name="CONSTRAINT_B">
+      <name-surrogate>1</name-surrogate>
+      <columns>ID</columns>
+      <primary>1</primary>
+    </key>
+    <column id="114" parent="18" name="USERID">
+      <mandatory>1</mandatory>
+      <data-type>INTEGER(10)|4</data-type>
+    </column>
+    <column id="115" parent="18" name="CUSTOMERID">
+      <mandatory>1</mandatory>
+      <data-type>INTEGER(10)|4</data-type>
+    </column>
+    <column id="116" parent="18" name="ENABLED">
+      <mandatory>1</mandatory>
+      <data-type>BOOLEAN(1)|16</data-type>
+    </column>
+    <column id="117" parent="18" name="PASSWORD">
+      <data-type>VARCHAR(255)|12</data-type>
+    </column>
+    <column id="118" parent="18" name="USERNAME">
+      <data-type>VARCHAR(255)|12</data-type>
+    </column>
+    <key id="119" parent="18" name="CONSTRAINT_4">
+      <name-surrogate>1</name-surrogate>
+      <columns>USERID</columns>
+      <primary>1</primary>
+    </key>
+  </database-model>
+</dataSource>
